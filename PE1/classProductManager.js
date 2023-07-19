@@ -20,7 +20,7 @@ class ProductManager {
       code,
       stock,
     };
-    // Validacion que el code exista
+
     const productindex = this.products.findIndex((e) => e.code === code);
     if (productindex !== -1) {
       console.log("*********************************************************");
@@ -42,6 +42,7 @@ class ProductManager {
     console.log("Se ha agregado el producto: ");
     return console.log(product);
   };
+
   // Debe contar con un metodo getProducts en cual debe devolver el arreglo con todos los productos creados hasta el momento.
   getProducts = () => {
     if (this.products.length === 0) {
@@ -100,6 +101,7 @@ adminProducts.addProduct(
   "abc123",
   25
 );
+adminProducts.getProducts();
 //Se evaluará que getProductById devuelva error si no encuentra el producto o el producto en caso de encontrarlo
 adminProducts.getProductById("1");
 adminProducts.getProductById("5");
