@@ -1,3 +1,4 @@
+//Importacion de librerias
 import express from "express";
 import { ProductManager } from "./ProductManager.js";
 
@@ -14,7 +15,7 @@ app.get("/", (req, res) => {
   res.send(`Server levantado sobre puerto: ${port}`);
 });
 
-//Ruta /products
+//Ruta /products?limit=
 app.get("/products", async (req, res) => {
   //Obtengo los productos
   const prod = await pro.getProducts();
@@ -29,23 +30,11 @@ app.get("/products", async (req, res) => {
   }
 });
 
-// PARAMS
+// Ruta /products/pid:
 app.get("/products/:pid", async (req, res) => {
+  //Se pasa pid convertido a numero usando + al metodo getProductById
   const getPID = await pro.getProductById(+req.params.pid);
-
   res.json(getPID);
-});
-
-app.get("/unparametro/:nombre/:apellido", (req, res) => {
-  console.log(req.params.nombre, req.params.apellido);
-  res.send(`Bienvenido: ${req.params.nombre} ${req.params.apellido}`);
-});
-// QUERY
-app.get("/ejemploQueries", (req, res) => {
-  let consultas = req.query;
-  let { nombre, apellido, edad } = req.query;
-  //res.send(consultas);
-  res.send({ nombre, apellido, edad });
 });
 
 // Servidor en escucha
