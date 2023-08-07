@@ -22,9 +22,11 @@ class ProductManager {
   getProducts = async () => {
     if (fs.existsSync(this.path)) {
       const data = await fs.promises.readFile(this.path, "utf-8");
-      const products = JSON.parse(data);
-      console.log(products);
-      return products;
+
+      //const products = await JSON.parse(data);
+      //console.log(products);
+      console.log(data);
+      return data;
     } else {
       return [];
     }
@@ -68,7 +70,7 @@ class ProductManager {
 //------------------------------------------------------------------/
 /// Testing
 // Se creará una instancia de la clase “ProductManager”
-const pro = new ProductManager("./productos.json");
+const pro = new ProductManager("./productos1.json");
 
 //Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
 pro.getProducts();
@@ -81,7 +83,7 @@ pro.getProducts();
 //code:”abc123”,
 //stock:25
 //El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
-let producto = {
+/* let producto = {
   title: "producto prueba 6",
   description: "Este es un producto prueba 5",
   price: 900,
@@ -89,13 +91,13 @@ let producto = {
   code: "abc12345",
   stock: 1950,
 };
-pro.addProduct(producto);
+pro.addProduct(producto); */
 
 // Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
 pro.getProducts();
 
 //Se llamará al método “updateProduct” y se intentará cambiar un campo de algún producto, se evaluará que no se elimine el id y que sí se haya hecho la actualización.
-let producto1 = {
+/* let producto1 = {
   title: "producto prueba Update",
   description: "Este es un producto prueba Update",
   price: 400,
@@ -104,7 +106,8 @@ let producto1 = {
   stock: 100,
 };
 
-pro.updateProduct(1, producto1);
+pro.updateProduct(1, producto1); */
 
 //Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir.
-pro.deleteProduct(2);
+/* pro.deleteProduct(2);
+ */
